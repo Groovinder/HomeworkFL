@@ -4,12 +4,10 @@ import { AuthForm } from '../components/AuthForm'
 import { useContext } from 'react'
 import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import { AuthContext } from '@/contexts/AuthContext'
-import { useRouter } from 'expo-router'
 import { useState } from 'react'
 
 
 export default function SignUp(props:any){
-    const router = useRouter()
     const auth = useContext(AuthContext);
     if (!auth){
         console.error("auth context not found")
@@ -34,6 +32,7 @@ export default function SignUp(props:any){
         console.log (email)
         console.log (password)
     }*/
+   signUp("9478@ait.nsw.edu.au", "testtest")
     return (
         <View>
         <AuthForm title="Sign up" actionText="Sign up" action = {signUp}/>
