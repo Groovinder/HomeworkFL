@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router';
 import { StyleSheet, StatusBar, SafeAreaView } from 'react-native';
 import { firebaseConfig } from '@/config/Config';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from '@firebase/app';
+import { getAuth } from '@firebase/auth';
 import { AuthContext } from '@/contexts/AuthContext';
 
 export default function RootLayout() {
