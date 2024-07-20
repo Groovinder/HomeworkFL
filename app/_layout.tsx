@@ -13,7 +13,7 @@ export default function RootLayout() {
   console.log("Firebase App Initialized:", FBapp.name === '[DEFAULT]'); 
   console.log("Firebase Auth Initialized:", FBauth);
   return (
-    <AuthContext.Provider value={{FBauth}}>
+    <AuthContext.Provider value={FBauth}>
       
       <SafeAreaView style={styles.container}>
         <Stack>

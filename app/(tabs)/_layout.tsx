@@ -4,8 +4,16 @@ import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { AuthContext } from '@/contexts/AuthContext';
+import { useContext, useEffect } from 'react'
 
 export default function TabLayout() {
+  const auth = useContext(AuthContext);
+  useEffect(() => {
+    if (auth ){
+     console.log(auth.currentUser.uid)
+    }
+  }, [auth])
   const colorScheme = useColorScheme();
 
   return (
@@ -24,14 +32,29 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="diary"
         options={{
-          title: 'Explore',
+          title: 'Diary',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'book' : 'book-outline'} color={color} />
           ),
-        }}
-      />
+        }}/>
+      <Tabs.Screen
+        name="goals"
+        options={{
+          title: 'Goals',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'trophy' : 'trophy-outline'} color={color} />
+          ),
+        }}/>
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
+          ),
+        }}/>
     </Tabs>
   );
 }
