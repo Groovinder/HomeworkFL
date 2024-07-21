@@ -33,9 +33,9 @@ else{
   return (
     <View>
     <AuthForm title="Sign in" actionText="Sign in" action = {signIn} />
-    <View>
-      <Text style={styles.container} >Don't have an account?<Link style={styles.link} href='/signUp'>
-        <Text style={styles.text}> Sign Up</Text>
+    <View style={styles.container}>
+      <Text style={styles.text} >Don't have an account?<Link style={styles.link} href='/signUp'>
+        <Text style={styles.linkText}> Sign Up Here!</Text>
       </Link></Text>
     </View>
   </View>

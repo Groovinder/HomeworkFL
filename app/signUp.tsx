@@ -6,11 +6,15 @@ import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import { AuthContext } from '@/contexts/AuthContext'
 import { useState } from 'react'
 import { useRouter } from 'expo-router'
+import { FirebaseDbContext } from '@/contexts/FirebaseDbContext'
+import { doc, setDoc } from "firebase/firestore";
 
 
 export default function SignUp(props:any){
+
     const router = useRouter();
     const auth = useContext(AuthContext);
+    const FBdb = useContext(FirebaseDbContext);
     if (!auth){
         console.error("auth context not found")
         return <Text>Auth context not found</Text>
@@ -35,7 +39,15 @@ export default function SignUp(props:any){
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           const uid = user.uid;
-          console.log("signed in")
+          //console.log("signed in")
+          //create user in firestore
+          setDoc(doc(FBdb, "users", user.uid), {
+            email: user.email,
+            uid: user.uid,
+            firstName: "",
+            lastName: "",
+            motto: "",
+          })
           router.replace("/(tabs)")
           // ...
         } else {
