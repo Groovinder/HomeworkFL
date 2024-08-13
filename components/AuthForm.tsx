@@ -3,20 +3,19 @@ import { useState, useEffect} from 'react';
 
 export function AuthForm (props: any){
     //initialize getter and setters
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [validPassword, setValidPassword] = useState(false);
 
     //validate email input
     useEffect(() => {
-        if (email.length > 0 && email.indexOf('@') > 0) {
+        if (props.email.length > 0 && props.email.indexOf('@') > 0) {
             setValidEmail(true);
         }
         else {
             setValidEmail(false);
         }
-    }, [email]);
+    }, [props.email]);
 
     //validate password input
     useEffect(() => {
@@ -34,8 +33,8 @@ export function AuthForm (props: any){
             <Text style={styles.label}>Email</Text>
             <TextInput 
              style={styles.input}
-             value={email}
-             onChangeText={(text) => setEmail(text)}
+             value={props.email}
+             onChangeText={(text) => props.setEmail(text)}
              />
             <Text style={styles.label}>Password</Text>
             <TextInput 
@@ -45,7 +44,7 @@ export function AuthForm (props: any){
              secureTextEntry={true}/>
             <Pressable 
              style={(validEmail && validPassword) ? styles.button : styles.buttonDisabled}
-             onPress = {() => props.action(email, password)}
+             onPress = {() => props.action(props.email, password)}
              disabled = {(validEmail && validPassword) ? false : true}>
                 <Text style={styles.buttonText}>{props.actionText}</Text>
             </Pressable>

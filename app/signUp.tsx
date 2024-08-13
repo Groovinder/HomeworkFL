@@ -15,13 +15,9 @@ export default function SignUp(props:any){
     const router = useRouter();
     const auth = useContext(AuthContext);
     const FBdb = useContext(FirebaseDbContext);
-    if (!auth){
-        console.error("auth context not found")
-        return <Text>Auth context not found</Text>
-    }
-    else{
-        console.log("auth is here")
-    }
+
+    const [email , setEmail] = useState('')
+   
     const signUp = (email: string, password: string) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -53,12 +49,12 @@ export default function SignUp(props:any){
         } else {
           // User is signed out
           // ...
-          console.log("signed out")
+         
         }
     })
     return (
         <View>
-        <AuthForm title="Sign up" actionText="Sign up" action = {signUp}/>
+        <AuthForm title="Sign up" actionText="Sign up" action = {signUp} email={email} setEmail={setEmail} />
         <View style={styles.container} >
             <Text  style={styles.text}>Already have an account?<Link style={styles.link} href='/'>
                 <Text style={styles.linkText}> Sign In Here!</Text>
