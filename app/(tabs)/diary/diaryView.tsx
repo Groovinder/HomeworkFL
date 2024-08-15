@@ -50,7 +50,7 @@ export default function diaryView() {
     return (
       <View style = {styles.listItem}>
         <Text style= {styles.listText}>{props.date}</Text>
-        <Text style= {styles.listText}>{props.tittle}</Text>
+        <Text style= {styles.listText}>{props.title}</Text>
         <Text style= {styles.listText}>{props.mood}</Text>
         <Link style = {styles.button} href={{ pathname: '/(tabs)/diary/entryView', params: { id: props.id } }}>
         <Text style={styles.buttonText}>View Entry</Text></Link>
@@ -65,7 +65,7 @@ export default function diaryView() {
   const renderEntry = ({item} : any) => {
     return (
       <View>
-        <ListEntries title={item.title} mood={item.mood} date={item.date}  id = {item.id}/>
+        <ListEntries title={item.tittle} mood={item.mood} date={item.date}  id = {item.id}/>
       </View>
     )
   }

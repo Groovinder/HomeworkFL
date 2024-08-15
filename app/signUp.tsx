@@ -44,7 +44,7 @@ export default function SignUp(props:any){
             lastName: "",
             motto: "",
           })
-          router.replace("/(tabs)")
+          router.replace("/(tabs)/home/home")
           // ...
         } else {
           // User is signed out
